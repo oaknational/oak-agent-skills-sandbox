@@ -1,0 +1,34 @@
+# A-02 second push, both exemptions added as init advises (single-quoted, verbatim): b7b217f (2026-11-16T18:15:45Z)
+
+$ gh pr checks 1
+Run static checks	fail
+.github/dependabot.yml	pass
+Analyze (actions)	pass
+Analyze (javascript-typescript)	pass
+CodeQL	pass
+Run database integration tests	pass
+Run unit tests	pass
+Verify published package	pass
+battle-probe	pass
+oak-skills check	pass
+Find a skills update	skipping
+Push the synced skills	skipping
+Sync the skills	skipping
+Run browser tests	pass
+Secret scan	pass
+
+## Run static checks: failing lines (job 133508173127)
+[ELIFECYCLE] Command failed with exit code 1.
+##[error]Process completed with exit code 1.
+hint: to use in all of your new repositories, which will suppress this warning,
+$ prettier --check .
+[warn] .agents/skills/.oak-manifest.json
+[warn] .agents/skills/oak-accessibility-review/SKILL.md
+[warn] .agents/skills/oak-pr-create/SKILL.md
+[warn] .agents/skills/oak-security-review/SKILL.md
+[warn] .agents/skills/oak-sos-draft/SKILL.md
+[warn] .agents/skills/oak-tdd/SKILL.md
+[warn] .agents/skills/oak-ticket-start/SKILL.md
+[warn] .github/dependabot.yml
+[warn] pnpm-workspace.yaml
+[warn] Code style issues found in 9 files. Run Prettier with --write to fix.
