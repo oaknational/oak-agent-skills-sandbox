@@ -1,0 +1,10 @@
+{
+  "name": "oak-agent-skills-sandbox",
+  "private": true,
+  "description": "Rehearsal workspace for oak-agent-skills workflows.",
+  "packageManager": "pnpm@11.2.0",
+  "engines": {
+    "node": ">=24.22.1 <25",
+    "pnpm": ">=11"
+  }
+}
