@@ -1,0 +1,106 @@
+# A-02 step 2: init from apps/web, then add frontend and sync (2026-11-16T18:11:44Z)
+$ pnpm exec oak-skills init
+Scope: all 3 workspace projects
+? Verifying lockfile against supply-chain policies (85 entries)...
+✗ Lockfile failed supply-chain policy check (85 entries in 425ms)
+[ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION] 1 lockfile entries failed verification:
+  @oaknational/oak-agent-skills@0.1.0 was published at 2026-11-16T16:54:57.000Z, within the minimumReleaseAge cutoff (2026-11-09T18:11:45.391Z)
+
+The lockfile contains entries that the active policies reject. This can mean the lockfile is stale, or that someone committed a lockfile that bypassed the policy locally — inspect recent changes to pnpm-lock.yaml before trusting it. If the changes look expected, run "pnpm clean --lockfile" and then "pnpm install" to rebuild from a fresh resolution. If the fresh resolution still fails and you trust the affected packages, relax the policy that flagged them.
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+Kept AGENTS.md, which already exists
+Kept CLAUDE.md, which already exists
+Created .github/workflows/oak-skills-check.yml
+Created .github/workflows/oak-skills-sync.yml
+Kept .github/dependabot.yml, which already exists
+Added oakSkills to package.json: profiles ["base"]
+Synced 5 skills from version 0.1.0 into .agents/skills/, with links in .claude/skills/.
+
+To do, because init never changes files you already have:
+- CLAUDE.md already exists. Add a line holding just @AGENTS.md at its top, so Claude Code reads AGENTS.md.
+- .github/dependabot.yml already exists. In its npm update, give the skills package a group of its own, listed before any other group, and check daily:
+      groups:
+        oak-agent-skills:
+          patterns:
+            - '@oaknational/oak-agent-skills'
+- .github/dependabot.yml sets a cooldown, which would hold back every skills release. Exempt the package in each cooldown:
+      cooldown:
+        exclude:
+          - '@oaknational/oak-agent-skills'
+- pnpm-workspace.yaml holds back new package versions for 10080 minutes, which would delay every skills release. Exempt the package:
+  minimumReleaseAgeExclude:
+    - '@oaknational/oak-agent-skills'
+
+Checklist:
+- [ ] The oak-skills GitHub App is installed on this repository, so the sync workflow can push.
+- [ ] The organisation Dependabot secrets OAK_SKILLS_APP_CLIENT_ID and OAK_SKILLS_APP_KEY are available to this repository.
+- [x] package.json has a packageManager field naming pnpm, which the workflows use to install the right version.
+- [ ] "oak-skills check" is a required status check for pull requests.
+exit=0
+
+## Existing files after init (shasum -c against before init)
+AGENTS.md: OK
+CLAUDE.md: OK
+.claude/settings.json: OK
+.github/dependabot.yml: OK
+pnpm-workspace.yaml: OK
+exit=0
+$ git status --short
+ M package.json
+ M pnpm-lock.yaml
+?? .agents/skills/.oak-manifest.json
+?? .agents/skills/oak-pr-create/SKILL.md
+?? .agents/skills/oak-pr-create/references/pr-description.md
+?? .agents/skills/oak-pr-create/references/testing-instructions.md
+?? .agents/skills/oak-security-review/SKILL.md
+?? .agents/skills/oak-security-review/references/checklist.md
+?? .agents/skills/oak-sos-draft/SKILL.md
+?? .agents/skills/oak-tdd/SKILL.md
+?? .agents/skills/oak-ticket-start/SKILL.md
+?? .claude/skills/oak-pr-create
+?? .claude/skills/oak-security-review
+?? .claude/skills/oak-sos-draft
+?? .claude/skills/oak-tdd
+?? .claude/skills/oak-ticket-start
+?? .github/workflows/oak-skills-check.yml
+?? .github/workflows/oak-skills-sync.yml
+?? battle/evidence/A-01/first-contact.txt
+?? battle/evidence/A-02/init-without-exemptions.txt
+?? battle/evidence/A-02/init.txt
+exit=0
+
+$ find apps/web -newer <scratch>/before.sha -not -path */node_modules/*
+exit=0
+
+(oakSkills.profiles set to ["base", "frontend"] by hand; pnpm exec's pre-run install warnings about the release age are left out of this file, see init-without-exemptions.txt)
+$ pnpm exec oak-skills sync
+Scope: all 3 workspace projects
+
+Added oak-accessibility-review
+Linked .claude/skills/oak-accessibility-review
+Synced 6 skills from version 0.1.0.
+exit=0 (sync and check printed success; zsh lost the code, re-run below)
+
+$ pnpm exec oak-skills check
+Scope: all 3 workspace projects
+
+oak-skills check passed: 6 skills match version 0.1.0.
+exit=0 (sync and check printed success; zsh lost the code, re-run below)
+
+$ ls -la .claude/skills
+total 0
+drwxr-xr-x@ 8 <user> <group>  256 16 Nov 18:11 .
+drwxr-xr-x@ 6 <user> <group>  192 16 Nov 18:11 ..
+lrwxr-xr-x@ 1 <user> <group>   45 16 Nov 18:11 oak-accessibility-review -> ../../.agents/skills/oak-accessibility-review
+lrwxr-xr-x@ 1 <user> <group>   34 16 Nov 18:11 oak-pr-create -> ../../.agents/skills/oak-pr-create
+lrwxr-xr-x@ 1 <user> <group>   40 16 Nov 18:11 oak-security-review -> ../../.agents/skills/oak-security-review
+lrwxr-xr-x@ 1 <user> <group>   34 16 Nov 18:11 oak-sos-draft -> ../../.agents/skills/oak-sos-draft
+lrwxr-xr-x@ 1 <user> <group>   28 16 Nov 18:11 oak-tdd -> ../../.agents/skills/oak-tdd
+lrwxr-xr-x@ 1 <user> <group>   37 16 Nov 18:11 oak-ticket-start -> ../../.agents/skills/oak-ticket-start
+exit=0 (sync and check printed success; zsh lost the code, re-run below)
+
+$ pnpm exec oak-skills check
+Scope: all 3 workspace projects
+oak-skills check passed: 6 skills match version 0.1.0.
+exit=0
+

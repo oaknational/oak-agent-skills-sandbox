@@ -4,6 +4,10 @@ updates:
     directory: /
     schedule:
       interval: daily
+    groups:
+      oak-agent-skills:
+        patterns:
+          - '@oaknational/oak-agent-skills'
     # Must match minimumReleaseAge in pnpm-workspace.yaml.
     cooldown:
       default-days: 7

@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # CLAUDE.md
 
 Read `AGENTS.md` for how this repository works.

@@ -1,0 +1,85 @@
+# A-02 step 1: install 0.1.0 with the release age overridden for this one command, then run init from apps/web with no exemptions in place (2026-11-16T18:11:30Z)
+$ pnpm add -D -w --ignore-scripts --config.minimum-release-age=0 @oaknational/oak-agent-skills@0.1.0
+✓ Lockfile passes supply-chain policies (verified 1m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 85, reused 0, downloaded 0, added 0, done
+
+devDependencies:
++ @oaknational/oak-agent-skills 0.1.0
+
+Packages: +1 -1
++-
+Done in 644ms using pnpm v11.28.7
+exit=0
+
+$ git diff -- package.json pnpm-workspace.yaml
+diff --git a/package.json b/package.json
+index d6a5567..3285543 100644
+--- a/package.json
++++ b/package.json
+@@ -18,6 +18,7 @@
+   "devDependencies": {
+     "@commitlint/cli": "21.2.2",
+     "@commitlint/config-conventional": "21.2.2",
++    "@oaknational/oak-agent-skills": "0.1.0",
+     "example": "workspace:*",
+     "husky": "9.1.5",
+     "lint-staged": "17.5.0",
+exit=0
+
+$ pnpm exec oak-skills --version
+Scope: all 3 workspace projects
+? Verifying lockfile against supply-chain policies (85 entries)...
+Lockfile is up to date, resolution step is skipped
+Already up to date
+✗ Lockfile failed supply-chain policy check (85 entries in 499ms)
+[ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION] 1 lockfile entries failed verification:
+  @oaknational/oak-agent-skills@0.1.0 was published at 2026-11-16T16:54:57.000Z, within the minimumReleaseAge cutoff (2026-11-09T18:11:31.384Z)
+
+The lockfile contains entries that the active policies reject. This can mean the lockfile is stale, or that someone committed a lockfile that bypassed the policy locally — inspect recent changes to pnpm-lock.yaml before trusting it. If the changes look expected, run "pnpm clean --lockfile" and then "pnpm install" to rebuild from a fresh resolution. If the fresh resolution still fails and you trust the affected packages, relax the policy that flagged them.
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+0.1.0
+exit=0
+
+(from apps/web)
+$ pnpm exec oak-skills init --dry-run
+Scope: all 3 workspace projects
+? Verifying lockfile against supply-chain policies (85 entries)...
+✗ Lockfile failed supply-chain policy check (85 entries in 417ms)
+[ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION] 1 lockfile entries failed verification:
+  @oaknational/oak-agent-skills@0.1.0 was published at 2026-11-16T16:54:57.000Z, within the minimumReleaseAge cutoff (2026-11-09T18:11:32.888Z)
+
+The lockfile contains entries that the active policies reject. This can mean the lockfile is stale, or that someone committed a lockfile that bypassed the policy locally — inspect recent changes to pnpm-lock.yaml before trusting it. If the changes look expected, run "pnpm clean --lockfile" and then "pnpm install" to rebuild from a fresh resolution. If the fresh resolution still fails and you trust the affected packages, relax the policy that flagged them.
+[WARN] The install that runs before scripts failed, so your node_modules may be out of sync with your lockfile. Set "verifyDepsBeforeRun: false" to skip this install.
+Kept AGENTS.md, which already exists
+Kept CLAUDE.md, which already exists
+Would create .github/workflows/oak-skills-check.yml
+Would create .github/workflows/oak-skills-sync.yml
+Kept .github/dependabot.yml, which already exists
+Would add oakSkills to package.json: profiles ["base"]
+Would sync 5 skills from version 0.1.0 into .agents/skills/, with links in .claude/skills/.
+
+To do, because init never changes files you already have:
+- CLAUDE.md already exists. Add a line holding just @AGENTS.md at its top, so Claude Code reads AGENTS.md.
+- .github/dependabot.yml already exists. In its npm update, give the skills package a group of its own, listed before any other group, and check daily:
+      groups:
+        oak-agent-skills:
+          patterns:
+            - '@oaknational/oak-agent-skills'
+- .github/dependabot.yml sets a cooldown, which would hold back every skills release. Exempt the package in each cooldown:
+      cooldown:
+        exclude:
+          - '@oaknational/oak-agent-skills'
+- pnpm-workspace.yaml holds back new package versions for 10080 minutes, which would delay every skills release. Exempt the package:
+  minimumReleaseAgeExclude:
+    - '@oaknational/oak-agent-skills'
+
+Checklist:
+- [ ] The oak-skills GitHub App is installed on this repository, so the sync workflow can push.
+- [ ] The organisation Dependabot secrets OAK_SKILLS_APP_CLIENT_ID and OAK_SKILLS_APP_KEY are available to this repository.
+- [x] package.json has a packageManager field naming pnpm, which the workflows use to install the right version.
+- [ ] "oak-skills check" is a required status check for pull requests.
+
+Dry run: nothing was changed.
+exit=0
+

@@ -1,0 +1,56 @@
+# A-01, adapted to Profile W: first contact without the release-age exemption (2026-11-16T18:11:17Z), pnpm 11.28.7, node v24.22.1
+$ pnpm add -D @oaknational/oak-agent-skills --ignore-scripts
+[ERR_PNPM_ADDING_TO_ROOT] Running this command will add the dependency to the workspace root, which might not be what you want - if you really meant it, make it explicit by running this command again with the -w flag (or --workspace-root). If you don't want to see this warning anymore, you may set the ignore-workspace-root-check setting to true.
+exit=1
+
+$ git diff --stat
+exit=0
+
+$ git checkout -- package.json pnpm-lock.yaml
+exit=0
+
+$ pnpm add -D -w @oaknational/oak-agent-skills --ignore-scripts
+✓ Lockfile passes supply-chain policies (verified 1m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 85, reused 0, downloaded 0, added 0, done
+
+devDependencies:
++ @oaknational/oak-agent-skills ^0.0.0
+
+Packages: +1
++
+Done in 653ms using pnpm v11.28.7
+exit=0
+
+$ grep oak-agent-skills package.json
+  "name": "oak-agent-skills-sandbox",
+  "description": "Rehearsal workspace for oak-agent-skills workflows.",
+    "@oaknational/oak-agent-skills": "^0.0.0",
+exit=0
+
+$ grep -A3 '@oaknational/oak-agent-skills' pnpm-lock.yaml
+      '@oaknational/oak-agent-skills':
+        specifier: ^0.0.0
+        version: 0.0.0
+      example:
+exit=0
+
+$ pnpm exec oak-skills --version
+undefined
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command "oak-skills" not found
+exit=1
+
+$ git checkout -- package.json pnpm-lock.yaml
+exit=0
+
+$ pnpm add -D -w @oaknational/oak-agent-skills@0.1.0 --ignore-scripts
+✓ Lockfile passes supply-chain policies (verified 1m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+[ERR_PNPM_NO_MATURE_MATCHING_VERSION] 1 version does not meet the minimumReleaseAge constraint:
+  @oaknational/oak-agent-skills@0.1.0 was published at 2026-11-16T16:56:18.350Z, within the minimumReleaseAge cutoff (2026-11-09T18:11:19.375Z)
+exit=1
+
+$ git status --short
+?? battle/evidence/A-01/first-contact.txt
+exit=0
+
