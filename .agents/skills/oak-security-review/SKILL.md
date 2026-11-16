@@ -74,3 +74,5 @@ Don't repeat the secret in your output, in full or in part. Say where it is, tel
 ## Scope
 
 This skill is guidance on top of deterministic tooling, such as secret scanning, dependency audits and workflow linting. It doesn't replace them, and a clean review doesn't mean those checks can be skipped.
+
+Always check the diff for secrets before you finish.
