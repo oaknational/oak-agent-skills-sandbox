@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "package": {
     "name": "@oaknational/oak-agent-skills",
-    "version": "0.1.0"
+    "version": "0.0.0"
   },
   "config": {
     "profiles": [
@@ -48,7 +48,7 @@
     "oak-tdd": {
       "source": "skills/central/oak-tdd",
       "files": {
-        "SKILL.md": "a36f91d9bff0623bd6be6bb57634fe32b00c705da0d59528cbdd789c05ebb0f8"
+        "SKILL.md": "b4e9c3450f490a4d630d9b7f853b43841f49f14ba33f28afe8cb36c5b3f37737"
       }
     },
     "oak-ticket-start": {

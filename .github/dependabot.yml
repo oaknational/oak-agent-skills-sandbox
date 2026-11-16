@@ -1,4 +1,5 @@
 version: 2
+# Armed for battle test D-01.
 updates:
   - package-ecosystem: npm
     directory: /
