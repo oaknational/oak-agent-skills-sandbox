@@ -20,3 +20,15 @@ Secret scan	pass
 ## Run static checks: failing lines (job 133508173127)
 [ELIFECYCLE] Command failed with exit code 1.
 ##[error]Process completed with exit code 1.
+hint: to use in all of your new repositories, which will suppress this warning,
+$ prettier --check .
+[warn] .agents/skills/.oak-manifest.json
+[warn] .agents/skills/oak-accessibility-review/SKILL.md
+[warn] .agents/skills/oak-pr-create/SKILL.md
+[warn] .agents/skills/oak-security-review/SKILL.md
+[warn] .agents/skills/oak-sos-draft/SKILL.md
+[warn] .agents/skills/oak-tdd/SKILL.md
+[warn] .agents/skills/oak-ticket-start/SKILL.md
+[warn] .github/dependabot.yml
+[warn] pnpm-workspace.yaml
+[warn] Code style issues found in 9 files. Run Prettier with --write to fix.

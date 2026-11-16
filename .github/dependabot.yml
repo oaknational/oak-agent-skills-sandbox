@@ -7,12 +7,12 @@ updates:
     groups:
       oak-agent-skills:
         patterns:
-          - '@oaknational/oak-agent-skills'
+          - "@oaknational/oak-agent-skills"
     # Must match minimumReleaseAge in pnpm-workspace.yaml.
     cooldown:
       default-days: 7
       exclude:
-        - '@oaknational/oak-agent-skills'
+        - "@oaknational/oak-agent-skills"
     commit-message:
       prefix: chore
       include: scope

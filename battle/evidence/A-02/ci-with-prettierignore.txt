@@ -1,0 +1,7 @@
+# A-02 third push: .agents/skills/ added to .prettierignore: 5d52f0e (2026-11-16T18:16:47Z)
+Run static checks: failure (job 133508968626). Other CI jobs and oak-skills check: success.
+
+$ prettier --check .
+[warn] .github/dependabot.yml
+[warn] pnpm-workspace.yaml
+[warn] Code style issues found in 2 files. Run Prettier with --write to fix.

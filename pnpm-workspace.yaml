@@ -7,4 +7,4 @@ engineStrict: true
 # 7 days, in minutes; must match the Dependabot cooldown.
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
-  - '@oaknational/oak-agent-skills'
+  - "@oaknational/oak-agent-skills"
