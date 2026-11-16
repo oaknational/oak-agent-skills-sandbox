@@ -1,0 +1,26 @@
+# A-02 first push, no exemptions: PR https://github.com/oaknational/oak-agent-skills-sandbox/pull/1 at 8a19a53 (2026-11-16T18:13:45Z)
+
+$ gh pr checks 1
+Run browser tests	fail
+Run database integration tests	fail
+Run static checks	fail
+Run unit tests	fail
+Verify published package	fail
+oak-skills check	fail
+Sync the skills	skipping
+Secret scan	pass
+battle-probe	pass
+Analyze (javascript-typescript)	pending
+Find a skills update	skipping
+Push the synced skills	skipping
+
+## job 133507226314: failing lines
+[ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION] 1 lockfile entries failed verification:
+  @oaknational/oak-agent-skills@0.1.0 was published at 2026-11-16T16:54:57.000Z, within the minimumReleaseAge cutoff (2026-11-09T18:13:16.424Z)
+##[error]Process completed with exit code 1.
+
+## job 133507225899: failing lines
+[ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION] 1 lockfile entries failed verification:
+  @oaknational/oak-agent-skills@0.1.0 was published at 2026-11-16T16:54:57.000Z, within the minimumReleaseAge cutoff (2026-11-09T18:13:31.744Z)
+##[error]Process completed with exit code 1.
+
