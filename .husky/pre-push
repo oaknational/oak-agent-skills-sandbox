@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+#
+# Modelled on the adapter's hook: refuse pushes to main, then scan the pushed
+# commits for secrets and check formatting.
+set -eu
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "gitleaks is required before pushing."
+  exit 1
+fi
+
+base=""
+tip=""
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -n "${local_ref:-}" ] || continue
+  case "$remote_ref" in
+  refs/heads/main)
+    echo "Refusing to push straight to main. Open a pull request instead."
+    exit 1
+    ;;
+  esac
+  case "$local_sha" in
+  *[!0]*) ;;
+  *) continue ;;
+  esac
+  [ -z "$base" ] || continue
+  tip="$local_sha"
+  case "$remote_sha" in
+  *[!0]*) base="$remote_sha" ;;
+  *) base="$(git rev-parse --verify --quiet origin/main || true)" ;;
+  esac
+done
+
+if [ -n "$base" ]; then
+  echo "Scanning the commits being pushed for secrets..."
+  gitleaks detect --redact=100 --source . --log-opts="$base..${tip:-HEAD}"
+fi
+
+echo "Checking formatting..."
+pnpm format

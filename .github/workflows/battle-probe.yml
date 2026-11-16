@@ -1,0 +1,48 @@
+# Battle-test probe (finding 10, B-05). Prints who started each pull request run, which
+# secrets it can see, and the token permissions GitHub grants it. It prints "present" or
+# "absent" for secrets, never a value, and withholds people's logins.
+name: battle-probe
+
+on:
+  pull_request:
+
+# Asks for write, to show what GitHub actually grants: the "Set up job" log lists it.
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  probe:
+    name: battle-probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Print the actors and the secrets this run can see
+        env:
+          ACTOR: ${{ github.actor }}
+          TRIGGERING_ACTOR: ${{ github.triggering_actor }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          ACTIONS_ONLY: ${{ secrets.BATTLE_ACTIONS_ONLY }}
+          DEPENDABOT_ONLY: ${{ secrets.BATTLE_DEPENDABOT_ONLY }}
+          APP_CLIENT_ID: ${{ secrets.OAK_SKILLS_APP_CLIENT_ID }}
+        run: |
+          who() {
+            case "$1" in
+              '') echo "(empty)" ;;
+              *'[bot]') echo "$1" ;;
+              *) echo "a person (login withheld)" ;;
+            esac
+          }
+          has() { if [ -n "$1" ]; then echo present; else echo absent; fi; }
+          echo "event: $EVENT ($ACTION)"
+          echo "head: $HEAD_REF at $HEAD_SHA"
+          echo "github.actor: $(who "$ACTOR")"
+          echo "github.triggering_actor: $(who "$TRIGGERING_ACTOR")"
+          echo "pull request author: $(who "$PR_AUTHOR")"
+          echo "BATTLE_ACTIONS_ONLY: $(has "$ACTIONS_ONLY")"
+          echo "BATTLE_DEPENDABOT_ONLY: $(has "$DEPENDABOT_ONLY")"
+          echo "OAK_SKILLS_APP_CLIENT_ID: $(has "$APP_CLIENT_ID")"

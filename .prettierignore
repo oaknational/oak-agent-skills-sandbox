@@ -1,0 +1,13 @@
+node_modules/
+.turbo/
+dist/
+.next/
+coverage/
+playwright-report/
+test-results/
+pnpm-lock.yaml
+apps/*/app/.well-known/workflow/
+# Written byte-for-byte by Vitest; reformatting one fails the test that owns it.
+__snapshots__/
+# Battle-test evidence is copied output, kept as it was captured.
+battle/evidence/

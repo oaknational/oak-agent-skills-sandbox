@@ -1,2 +1,6 @@
 node_modules/
 .DS_Store
+
+# Personal Claude Code overrides. The checked-in settings.json is shared.
+.claude/settings.local.json
+*.local.*
