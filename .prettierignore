@@ -11,3 +11,6 @@ apps/*/app/.well-known/workflow/
 __snapshots__/
 # Battle-test evidence is copied output, kept as it was captured.
 battle/evidence/
+
+# Synced by oak-skills; edit them in the central repository.
+.agents/skills/
