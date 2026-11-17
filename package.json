@@ -18,7 +18,7 @@
   "devDependencies": {
     "@commitlint/cli": "21.2.2",
     "@commitlint/config-conventional": "21.2.2",
-    "@oaknational/oak-agent-skills": "0.0.0",
+    "@oaknational/oak-agent-skills": "0.1.0",
     "example": "workspace:*",
     "husky": "9.1.5",
     "lint-staged": "17.6.0",
