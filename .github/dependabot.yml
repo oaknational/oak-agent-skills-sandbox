@@ -1,5 +1,5 @@
 version: 2
-# Armed for battle test D-01, with one slot free.
+# Armed for battle tests D-03, B-01 and B-05, with one slot free.
 updates:
   - package-ecosystem: npm
     directory: /
