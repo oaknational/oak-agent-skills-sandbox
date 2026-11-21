@@ -1,19 +1,27 @@
 version: 2
-# Armed for battle tests D-03, B-01 and B-05, with one slot free.
+# Armed for battle test D-05: the adapter's npm entry, with no group for the package.
 updates:
   - package-ecosystem: npm
+    # The workspace has one root lockfile; per-package entries would conflict
+    # over it.
     directory: /
     schedule:
-      interval: daily
-    groups:
-      oak-agent-skills:
-        patterns:
-          - "@oaknational/oak-agent-skills"
-    # Must match minimumReleaseAge in pnpm-workspace.yaml.
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/London
+    open-pull-requests-limit: 5
     cooldown:
       default-days: 7
       exclude:
-        - "@oaknational/oak-agent-skills"
+        - "@oaknational/*"
     commit-message:
       prefix: chore
       include: scope
+    groups:
+      npm:
+        patterns: ["*"]
+        update-types: [minor, patch]
+      npm-security:
+        applies-to: security-updates
+        patterns: ["*"]
