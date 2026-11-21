@@ -9,6 +9,8 @@ metadata:
 
 # Security review
 
+Battle-test canary X-02: this line is a harmless test edit and must never merge.
+
 Find the ways a change could let someone do something they shouldn't, or expose something that should stay private. Focus on real, reachable problems, and explain each one well enough that the author can fix it.
 
 Our tooling already scans for secrets, vulnerable dependencies and unsafe workflow patterns. This review adds the judgement those tools can't: who can reach the new code, what they control, and what they could do with it.

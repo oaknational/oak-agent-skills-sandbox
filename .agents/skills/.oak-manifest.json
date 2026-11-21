@@ -35,7 +35,7 @@
     "oak-security-review": {
       "source": "skills/central/oak-security-review",
       "files": {
-        "SKILL.md": "284cb81961b9460c1bb1224fa5af2524d8875af7a9f62cd48424140b390b2aa6",
+        "SKILL.md": "348005cbf250e68b6de19d60cb929437a8a34aa711ba276d6c1d5565ff01c6d8",
         "references/checklist.md": "4c601cc9eab81dd2f5143b087dd3732d92da218b28e502ef102eca5de656ac1c"
       }
     },
