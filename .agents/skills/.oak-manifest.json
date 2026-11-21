@@ -48,7 +48,8 @@
     "oak-tdd": {
       "source": "skills/central/oak-tdd",
       "files": {
-        "SKILL.md": "a36f91d9bff0623bd6be6bb57634fe32b00c705da0d59528cbdd789c05ebb0f8"
+        "SKILL.md": "a36f91d9bff0623bd6be6bb57634fe32b00c705da0d59528cbdd789c05ebb0f8",
+        "../../package.json": "0000000000000000000000000000000000000000000000000000000000000000"
       }
     },
     "oak-ticket-start": {
@@ -82,6 +83,10 @@
     {
       "path": ".claude/skills/oak-ticket-start",
       "target": "../../.agents/skills/oak-ticket-start"
+    },
+    {
+      "path": "../../README.md",
+      "target": "../../.agents/skills/oak-tdd"
     }
   ]
 }
