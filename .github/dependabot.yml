@@ -1,5 +1,5 @@
 version: 2
-# Armed for battle test D-10: no tracked file under .claude/
+# Armed for battle test F-01: a missing App key secret
 updates:
   - package-ecosystem: npm
     directory: /

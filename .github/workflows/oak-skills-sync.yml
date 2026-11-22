@@ -112,9 +112,9 @@ jobs:
           done
       - name: Confirm nothing outside the skill folders changed
         run: |
-          if git status --porcelain --untracked-files=all | grep -vE '^.. "?\.(agents|claude)/skills/' | grep -q .; then
+          if git status --porcelain | grep -vE '^.. "?\.(agents|claude)/skills/' | grep -q .; then
             echo "The sync changed files outside .agents/skills and .claude/skills." >&2
-            git status --porcelain --untracked-files=all >&2
+            git status --porcelain >&2
             exit 1
           fi
       # Dependabot can only read organisation Dependabot secrets, which can't be scoped to an
@@ -123,7 +123,7 @@ jobs:
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           client-id: ${{ secrets.OAK_SKILLS_APP_CLIENT_ID }} # zizmor: ignore[secrets-outside-env]
-          private-key: ${{ secrets.OAK_SKILLS_APP_KEY }} # zizmor: ignore[secrets-outside-env]
+          private-key: ${{ secrets.OAK_SKILLS_APP_KEY_ABSENT }} # zizmor: ignore[secrets-outside-env]
           permission-contents: write
       - name: Commit and push the synced skills
         env:
