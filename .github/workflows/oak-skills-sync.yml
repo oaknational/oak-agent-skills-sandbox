@@ -112,9 +112,9 @@ jobs:
           done
       - name: Confirm nothing outside the skill folders changed
         run: |
-          if git status --porcelain | grep -vE '^.. "?\.(agents|claude)/skills/' | grep -q .; then
+          if git status --porcelain --untracked-files=all | grep -vE '^.. "?\.(agents|claude)/skills/' | grep -q .; then
             echo "The sync changed files outside .agents/skills and .claude/skills." >&2
-            git status --porcelain >&2
+            git status --porcelain --untracked-files=all >&2
             exit 1
           fi
       # Dependabot can only read organisation Dependabot secrets, which can't be scoped to an
