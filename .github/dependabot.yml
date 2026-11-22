@@ -1,5 +1,5 @@
 version: 2
-# Armed for battle test F-01: a missing App key secret
+# Armed for battle test F-07: an unsynced bump reaches main
 updates:
   - package-ecosystem: npm
     directory: /
