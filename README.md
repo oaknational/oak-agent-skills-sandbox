@@ -13,3 +13,5 @@ It's set up like Oak's pnpm workspaces:
 - Node 24.22.1 or a later Node 24
 - pnpm 11
 - a 7-day minimum release age in pnpm, matched by a 7-day Dependabot cooldown
+
+Battle test F-07: an unrelated change opened while main holds an unsynced bump.
