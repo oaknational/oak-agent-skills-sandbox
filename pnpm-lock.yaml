@@ -12,23 +12,23 @@ importers:
         specifier: 21.2.4
         version: 21.2.4(conventional-commits-parser@7.1.4)(typescript@6.0.2)
       '@commitlint/config-conventional':
-        specifier: 21.2.2
-        version: 21.2.2
+        specifier: 21.2.4
+        version: 21.2.4
       '@oaknational/oak-agent-skills':
-        specifier: 0.0.0
-        version: 0.0.0
+        specifier: 0.1.0
+        version: 0.1.0
       example:
         specifier: workspace:*
         version: link:packages/example
       husky:
-        specifier: 9.1.5
-        version: 9.1.5
+        specifier: 9.1.7
+        version: 9.1.7
       lint-staged:
         specifier: 17.6.0
         version: 17.6.0
       prettier:
-        specifier: 3.9.8
-        version: 3.9.8
+        specifier: 3.10.1
+        version: 3.10.1
       turbo:
         specifier: 2.11.11
         version: 2.11.11
@@ -55,10 +55,6 @@ packages:
     resolution: {integrity: sha512-g3M/wrQdElqGH5vROIeL2QiYIxrzqUkhCgsDyDlWfKEyQdCt10OyMB28W2cJtpZ+VNGMvmaN923infr1hOfyrg==}
     engines: {node: '>=22.12.0'}
     hasBin: true
-
-  '@commitlint/config-conventional@21.2.2':
-    resolution: {integrity: sha512-NxA37SZviusFUEYOQZ5hNnZ1h7O/KiemPkxjOlpzKJNnWxThiwc6/SaZhaPa8fyLvfRBAywhQhJJk8XESHWlpQ==}
-    engines: {node: '>=22.12.0'}
 
   '@commitlint/config-conventional@21.2.4':
     resolution: {integrity: sha512-IRldtwgNmR0SySR7wizFbhRmq45lPt6H3XCNTMyVN7jrPLgi8JlTRR6Eg1HLWUQt9P1Lh3k6eY25ilDa47EE6w==}
@@ -140,8 +136,10 @@ packages:
     resolution: {integrity: sha512-mHyyEL0eIEqJ6+aF24+AdZRo4bu4W5GdUiCiCx5X7kfDY51ye8GQJ264uOINObrRSKxtSRCOWPpl9hbOy4UzxQ==}
     engines: {node: '>=22'}
 
-  '@oaknational/oak-agent-skills@0.0.0':
-    resolution: {integrity: sha512-U2Oo7fMt1+SbSwidaYPGrY+1zj8IP3L628WshucqJo4yfCevcrfe73ZqFH2+hnSYHmopFVssao8bWvQlCH0Lpw==}
+  '@oaknational/oak-agent-skills@0.1.0':
+    resolution: {integrity: sha512-6TAkx8MFmpqfind6GA9glGwYqKg5ykL7sKthFo9KsajNZNh0VFIzRxsZMCZFBXTgcBP9MFweFggMviddGau4cw==}
+    engines: {node: '>=24.22.1 <25'}
+    hasBin: true
 
   '@simple-libs/child-process-utils@2.0.0':
     resolution: {integrity: sha512-dvNoRKLijXnD0XoJAz94pbNuB5GQgDr55UhpSPhffDkTT0Cmcqh9jSCOtwfT2d4H6MI9E7c4SgtMuJXZ6F3c6A==}
@@ -264,8 +262,8 @@ packages:
     resolution: {integrity: sha512-1pgFdhK3J2LeM+dVf2Pd424yHx2ou338lC0ErNP2hPx4j8eW1Sp0XqSjNxtk6Tc4Kr5wlWtSvz8cn2yb7/SG/w==}
     engines: {node: '>=20'}
 
-  husky@9.1.5:
-    resolution: {integrity: sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==}
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -324,8 +322,8 @@ packages:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
 
-  prettier@3.9.8:
-    resolution: {integrity: sha512-WRFq3Wn3WId7LLROfMLdH7xaFr2jR62wU8nLO6rQUOLOxNZUviyJQs1M0iIhLexSFy+L+w0ch66wtoO2jRjG0A==}
+  prettier@3.10.1:
+    resolution: {integrity: sha512-70vp3ZUYoPlFbF9uiTdXHUUCGEIp7d4+6p+8DYbkm2jP7x/3i/paXVF6dopSI3zd/CEitrZN1rc4i85xWmmXlg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -424,11 +422,6 @@ snapshots:
       - conventional-commits-filter
       - conventional-commits-parser
       - typescript
-
-  '@commitlint/config-conventional@21.2.2':
-    dependencies:
-      '@commitlint/types': 21.2.3
-      conventional-changelog-conventionalcommits: 10.4.1
 
   '@commitlint/config-conventional@21.2.4':
     dependencies:
@@ -532,7 +525,7 @@ snapshots:
 
   '@conventional-changelog/template@1.4.1': {}
 
-  '@oaknational/oak-agent-skills@0.0.0': {}
+  '@oaknational/oak-agent-skills@0.1.0': {}
 
   '@simple-libs/child-process-utils@2.0.0':
     dependencies:
@@ -627,7 +620,7 @@ snapshots:
     dependencies:
       ini: 6.0.0
 
-  husky@9.1.5: {}
+  husky@9.1.7: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -677,7 +670,7 @@ snapshots:
 
   picomatch@4.0.7: {}
 
-  prettier@3.9.8: {}
+  prettier@3.10.1: {}
 
   require-from-string@2.0.2: {}
 
