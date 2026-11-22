@@ -27,7 +27,7 @@ jobs:
           persist-credentials: false
       - name: Look for private keys
         run: |
-          if git grep -nE 'BEGIN [A-Z ]*PRIVATE KEY' -- . ':!battle/evidence'; then
+          if git grep -nE 'BEGIN [A-Z ]*PRIVATE KEY' -- .; then
             echo "A private key is committed." >&2
             exit 1
           fi
