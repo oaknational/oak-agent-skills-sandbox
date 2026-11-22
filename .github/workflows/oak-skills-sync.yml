@@ -123,7 +123,7 @@ jobs:
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           client-id: ${{ secrets.OAK_SKILLS_APP_CLIENT_ID }} # zizmor: ignore[secrets-outside-env]
-          private-key: ${{ secrets.OAK_SKILLS_APP_KEY_ABSENT }} # zizmor: ignore[secrets-outside-env]
+          private-key: ${{ secrets.OAK_SKILLS_APP_KEY }} # zizmor: ignore[secrets-outside-env]
           permission-contents: write
       - name: Commit and push the synced skills
         env:
