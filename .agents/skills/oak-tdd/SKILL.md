@@ -9,7 +9,7 @@ metadata:
 
 # Test-driven development
 
-Write the test before the code it tests, one small behaviour at a time. A test you haven't seen fail proves nothing: it might pass whatever the code does.
+Write each test before the code it tests, one small behaviour at a time. A test you haven't seen fail proves nothing: it might pass whatever the code does.
 
 ## Before you start
 
