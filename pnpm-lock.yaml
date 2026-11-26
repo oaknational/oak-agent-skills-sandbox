@@ -15,8 +15,8 @@ importers:
         specifier: 21.2.4
         version: 21.2.4
       '@oaknational/oak-agent-skills':
-        specifier: 0.1.0
-        version: 0.1.0
+        specifier: 0.3.0
+        version: 0.3.0
       example:
         specifier: workspace:*
         version: link:packages/example
@@ -136,8 +136,8 @@ packages:
     resolution: {integrity: sha512-mHyyEL0eIEqJ6+aF24+AdZRo4bu4W5GdUiCiCx5X7kfDY51ye8GQJ264uOINObrRSKxtSRCOWPpl9hbOy4UzxQ==}
     engines: {node: '>=22'}
 
-  '@oaknational/oak-agent-skills@0.1.0':
-    resolution: {integrity: sha512-6TAkx8MFmpqfind6GA9glGwYqKg5ykL7sKthFo9KsajNZNh0VFIzRxsZMCZFBXTgcBP9MFweFggMviddGau4cw==}
+  '@oaknational/oak-agent-skills@0.3.0':
+    resolution: {integrity: sha512-1Ih8XDrUtXJK0txTdMJxKiTFbBvA4cDB16GKRuYxwObdfDsML8WHe649dQVOih67akI0Eqchxmh+HbKIdAgAKg==}
     engines: {node: '>=24.22.1 <25'}
     hasBin: true
 
@@ -525,7 +525,7 @@ snapshots:
 
   '@conventional-changelog/template@1.4.1': {}
 
-  '@oaknational/oak-agent-skills@0.1.0': {}
+  '@oaknational/oak-agent-skills@0.3.0': {}
 
   '@simple-libs/child-process-utils@2.0.0':
     dependencies:
